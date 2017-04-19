@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 $('#ui_waiting').fadeOut(0);
 $('#qrcode').fadeOut(0);
-$('#ui_popup').fadeOut(0);
+$('#ui_popup').slideUp();
 $('#ui_login').fadeOut(0);
 $('#ui_logged_out').fadeOut(0);
 $('#update_button').fadeOut(0);
@@ -45,6 +45,25 @@ var isAuthorized = false;
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 160,
 	height : 160
+});
+
+
+
+
+//handle all links and open them in external browser
+$(document).on('click', 'a[href^="http"]', function(event) {
+    event.preventDefault();
+    
+    var remote = require('electron').remote;
+	var ipcRenderer = require('electron').ipcRenderer; 
+	remote.getGlobal('open_url').url = this.href;
+
+	ipcRenderer.send('open_url');
+	ipcRenderer.on('open_url', function(event, arg) {
+		if(arg == 1){
+			showPopup("URL opened in your default browser.");
+		}	
+	});
 });
 
 
@@ -86,31 +105,17 @@ function onAuthorized(){
 		
 		
 		//showTip();
-  		$('#tip').fadeIn(200);
-  		$('#tip').text('Press Ctrl + Shift + U to hide UniClip. Press again to unhide.');
+  		// showTip('Press Ctrl + Shift + U to hide UniClip. Press again to unhide.');
 	
 	}, 500);
 }
 
 function showTip(){
 		setTimeout(function() {
-			$('#update_button').fadeOut(200);	
-			$('#tip').fadeIn(400);
+			$('#tip').fadeIn(00);
 			
 			setTimeout(function() {	
-				$('#tip').fadeOut(200);
-				
-					
-					setTimeout(function() {	
-						$('#update_button').fadeOut(200);	
-						$('#tip').fadeIn(400);
-					
-						setTimeout(function() {	
-							showTip();
-					
-						}, 6000);
-					
-					}, 3000);
+				$('#tip').fadeOut(0);
 			
 			}, 6000);
 			
@@ -118,16 +123,16 @@ function showTip(){
 }
 
 function showPopup(mess){
-	$('#ui_popup').fadeIn(400);
+	$('#ui_popup').slideDown(400);
 	$('#popup_content').text(mess);
 	
 	setTimeout(function() {		
-		$('#ui_popup').fadeOut(200);
-	}, 1000);
+		$('#ui_popup').slideUp(200);
+	}, 3000);
 	
 	setTimeout(function() {		
 		$('#popup_content').text("");
-	}, 1600);
+	}, 3600);
 	
 }
 
@@ -262,9 +267,20 @@ function hideAll(){
 	$('#ui_about').fadeOut(400);
 	$('#ui_android').fadeOut(400);
 	$('#ui_update').fadeOut(400);
+	$('#running_menu').slideUp();
+
 }
 
 
+// show menu in running screen
+$('#show_running_menu').click(function (e) {
+	$('#running_menu').slideDown();
+});
+
+
+$('#b_running_menu_close').click(function (e) {
+	$('#running_menu').slideUp();
+});
 
 
 
@@ -406,6 +422,17 @@ $('#b_update').click(function (e) {
 
 
 
+
+$('#b_update_running').click(function (e) {
+	hideAll();
+	
+	setTimeout(function() {	
+		$('#ui_update').fadeIn(400);
+	}, 400);
+});
+
+
+
 $('#b_close_update').click(function (e) {
 	hideAll();
 	setTimeout(function() {	
@@ -441,6 +468,11 @@ $('#b_unregister').click(function (e) {
 	logout();
 	$('#sync').fadeOut(600);
 });
+
+
+$('#logo_img').click(function(){
+	window.location.reload();
+})
 
 function logout(){
 	
@@ -489,6 +521,9 @@ function updateAvailable(){
 	 hideAll();
 	 ipcRenderer.on('updateAvailable', function(event, arg) {
 		if(arg === 1){
+			//show update available card
+			$('#card_update').removeClass('hidden');
+			//show update button in menu
 			$('#b_update').removeClass('hidden');	
 		}
 	 });
@@ -576,38 +611,41 @@ function window_close(){
 	}, 1400);
 }
 
+$('#close_window').click(function() {
+	window_close();
+});
 
 
 //Buttons onhover actions
 $('#close_window').mouseover(function() {
-  $('#tip').fadeIn(400);
+  $('#tip').fadeIn(0);
   $('#tip').text('Minimize UniClip!');
 });
 
 $('#close_window').mouseout(function() {
-  $('#tip').fadeOut(800);
+  $('#tip').fadeOut(0);
 });
 
 
 
 $('#move_icon').mouseover(function() {
-  $('#tip').fadeIn(400);
+  $('#tip').fadeIn(0);
   $('#tip').text('Move window by dragging.');
 });
 
 $('#move_icon').mouseout(function() {
-  $('#tip').fadeOut(800);
+  $('#tip').fadeOut(0);
 });
 
 
 
 $('#qrcode').mouseover(function() {
-  $('#tip').fadeIn(400);
+  $('#tip').fadeIn(0);
   $('#tip').text('Scan this QR code using UniClip mobile app.');
 });
 
 $('#qrcode').mouseout(function() {
-  $('#tip').fadeOut(800);
+  $('#tip').fadeOut(0);
 });
 
 

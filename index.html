@@ -12,110 +12,115 @@
   </head>
   
   
-  <body style="-webkit-user-select: none;" bgcolor="#009688" onLoad="initialize()">
-  <div class="background" id="background"></div>
-  <div ><img id="sync" src="img/sync.png" width="120" height="120" class="rotate"></div>
-  
-  <!--Difference in Linux and Windows -->
-  <div class="move" id="move_icon" style="-webkit-app-region: drag"><img src="img/move.png" alt="Move UniClip!" height="46px"></div>
-  
-  <!--style="-webkit-user-select: none;"-->
-  <!--set buttons non draggable https://github.com/atom/electron/blob/master/docs/api/frameless-window.md-->
-  
-  <div class="foreground" id="foreground">
-  
+  <body style="-webkit-user-select: none;" bgcolor="#ECE5DD" onLoad="initialize()">
+        <div class="background" id="background"></div>
+        <div>
+            <img id="sync" src="img/sync.png" width="120" height="120" class="rotate">
+        </div>
+      
+
+        <!--Difference in Linux and Windows -->
+        <!--Version info-->
+        <div style="position: absolute; left: 80px;">
+            <img src="img\app.png" height="56px" style="margin-bottom: 4px;" id="logo_img"></a><br>
+            <font size="-1" style=" position: absolute; top: 0px; left: 150px;">v4
+            </font>
+        </div>
 
 
-    <!--Difference in Linux and Windows -->
-    <!--Version info-->
-    <center><div><img src="img\app.png" height="56px" style="margin-bottom: 4px; -webkit-app-region: drag;" id="logo_img"></a><br>
+        <!-- top bar -->
+        <div class="topbar"></div>
 
-   <font size="-1" style="margin-bottom: 10px;">version 3</font></div></center>
-    
-    <!-- Menu Div -->
-    <div id="menu_on" class="hidden">
-    <div id="menu_on_right" style="position:absolute; right: 10px; bottom: 5px;">
-    
-        <a btn href="#" id="history" onclick="window.top.close(); return false"><img src="img\history.png"  height="40px"></a>
+        <!-- Sidebar -->
+        <div class="sidebar" >
+            <img src="img/menu.png" width="40px" id="show_running_menu">
+            <!-- <img src="img/ic_launcher.png" width="32px" style="-webkit-app-region: drag"> -->
+<!--             <hr/>
+            <img src="img/user.png" width="36px" class="icon">
+            <img src="img/settings.png" width="36px" class="icon">
+            <img src="img/history.png" width="36px" class="icon">
+            <img src="img/help.png" width="36px" class="icon">
+            <img src="img/info.png" width="36px" class="icon"> -->
+        </div>
+
+        <!-- Right -->
+        <div class="rightbar">
+            <!--Difference in Linux and Windows -->
+            <img src="img/move.png" class="move icon" id="move_icon"  style="-webkit-app-region: drag"  width="40px" id="show_running_menu">
+            <img src="img/minimize.png" class="icon" id="close_window" width="40px" id="show_running_menu">
+        </div>
+
+
+      <div class="foreground" id="foreground">
+
+
+            
+
+       <!-- Main content-->
+        <div id="container">
         
-        <a btn href="#" id="help" onclick="window.top.close(); return false"><img src="img\help.png"  height="40px"></a>
-        
-        <a btn href="#" id="user"><img src="img\user.png"  height="40px"></a>
-    </div>
-    
-    <div id="menu_on_left" style="position:absolute; bottom: 5px;">
-      <a btn href="#" id="back" onclick=""><img src="img\back.png"  height="40px" style="left: 10px;"></a>
-    </div>
-    </div>
-    
-    
-    <div id="menu_off">
-    <div style="position:absolute; right: 10px; bottom: 5px;">
-    
-    <a btn href="#" id="close_window" onclick="window_close()"><img src="img\close_x.png" alt="Minimize to tray" class="close" height="40px"></a>
-    </div>
-    
-    <div style="position:absolute; bottom: 5px;">
-    
-    <a btn id="menu" class="hidden" onclick=""><img src="img\menu.png"  height="40px" style="left: 10px;"></a>
-    </div>
-    </div>
-    
-    
-   <!-- Main content-->
-    <div id="container">
-        <div id="form">
-    
             <!--Waiting-->
             <center>
-            <div id="ui_waiting">
-                <br><br><br><br><br>
-                <center><span class="bold">Please wait</span><br><span class="faint">Generating session token</span></center><br>
-            </div>
+                <div id="ui_waiting">
+                    <br><br><br><br><br>
+                    <center><span class="bold">Please wait</span><br><span class="faint">Generating session token</span></center><br>
+                </div>
             </center>
-    
+
             <!--Login Section-->
             <center>
-            <div id="ui_login">
-                
-                <center><font size="3.2px">Scan the QR code using UniClip app on your mobile device.</font></center><br><br>
-                <a id="qr_code"><div id="qrcode" style="width:180px; height:180px; margin-top:15px;"></div></a>
-                <br>
+                <div id="ui_login" class="pages-no-bg" style="padding-top: 26px;">
                     
-                <button class="button" style="masrgin-bottom:8px;; margin-left: 10px;"  id="b_howtoscan">How to scan the code</button><br><br>
-                <button class="button" style="margin-bottom:8px;; margin-left: 10px;"  id="b_android">Get Android app</button>
-            </div>
+                    <center>
+                        <font size="3.2px">Scan the QR code using UniClip app on your mobile device.</font>             
+                    </center>
+                    <br>
+                    
+                    <a id="qr_code">
+                    <div id="qrcode" style="width:180px; height:180px; margin-top:15px;"></div></a>
+                    <br>
+                        
+                    <button class="button" style="masrgin-bottom:8px;; margin-left: 10px;"  id="b_howtoscan">How to scan the code</button><br>
+                </div>
             </center>
-                
+
             <!--Running-->
-            <div id="ui_running" class="hidden">
-                <div style="align-content: center; margin-left:00px; text-align:justify" class="box">
-                    <center><font size="+1" style="font-weight:1400;">UniClip service is active.<br> Please take a look at 'Keyboard shortcuts' & 'Preferences'.</font></center>
-                </div><br>
-                
-                <button class="button_anim" style="margin-bottom:8px; margin-left: 10px;" id="b_globalkeyshortcuts_from_running">Keyboard Shortcuts</button><br>
-                <button class="button_anim" style="margin-bottom:8px; margin-left: 10px;" id="b_preferences">Preferences</button><br>
-                <button class="button_anim" style="margin-bottom:8px;; margin-left: 10px;" id="b_unregister">Unregister desktop</button><br>
-                <button class="button_anim" style="margin-bottom:8px;; margin-left: 10px;" id="b_about">About</button><br>
-                <button class="button_anim" style="margin-bottom:8px;; margin-left: 10px;" id="b_help">Help</button><br>
-                <button class="button_anim_alt hidden" style="margin-bottom:8px;; margin-left: 10px;" id="b_update">Update available</button>
-                
-                <center><span id="tip" style="position:absolute; bottom: 10px; left: 20px; opacity: 0.8; font-size:15px;"></span></center>
+            <div id="ui_running" class="hidden pages-no-bg">
+                <div style="align-content: left; margin: 10px; text-align:justify">
+                    <font style=""  color="#222">
+                        <center><img src="img/circle_logo.png" width="100px" style="margin-top: 30px;"></center>
+                        <div class="card card-2">
+                            <span class="accent">Hey there.</span><br/>
+                            UniClip is a cross-platform clipboard synchronization tool. UniClip is now active and running in the background. <br/>
+                        </div>
+                        <div class="card card-2">
+                            UniClip offers very cool customizations to improve your experience. Make sure you customize UniClip in the 'Preferences' menu.
+                        </div>
+
+                        <!-- update div -->
+                        <div class="card card-2 hidden" id="div_update">
+                            <span class="accent heading block">Update available.</span>
+                            An update is available for the desktop client. Please update ASAP to enjoy latest features and more stable experience.<br>
+                            <button class="button_anim" style="margin-top:8px;; margin-left: 2px;" id="b_update_running">Update</button>
+                        </div>
+                    </font>
+                </div>
+                <br>
             </div>
-    
+
         
             <!--LoggedOut-->
             <div id="ui_logged_out" class="hidden">
                 <br><br><br><br><br>
                 <center><span class="bold">Successfully logged out.</span><br><span class="faint">The app will close in 4 secs.</span></center><br>
             </div>
-    
-    
+
+
             <!--How to scan-->
             <div id="ui_howtoscan" class="hidden pages">
                 <div class="pages_content"> 
                     <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="black">
-                        <font class="accent bold" style="font-weight:1400;">How to scan?</font>
+                        <font class="accent bold heading" style="font-weight:1400;">How to scan?</font>
                         <br>
                             1. To scan, click on the icon on your mobile device which looks something like: 
                             <br>
@@ -139,7 +144,7 @@
             <div id="ui_android" class="hidden pages">
                 <div class="pages_content"> 
                     <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="black">
-                        <font class="accent bold" style="font-weight:1400;">Android app</font>
+                        <font class="accent bold heading" style="font-weight:1400;">Android app</font>
                         <br>
                             1. To download the UniClip android app, scan the QR code on your android device. 
                             <br><br>
@@ -156,15 +161,14 @@
             <div id="ui_about" class="hidden pages">
                 <div class="pages_content"> 
                     <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="black">
-                        <font class="accent bold" style="font-weight:1400;">About UniClip</font>
+                        <font class="accent bold heading" style="font-weight:1400;">About UniClip</font>
                         <br>
                             1. UniClip is a cross-platform clipboard synchronization tool. Currently, only supporting Android and Windows PC, however, applications for Mac and Linux are under-development.<br><br>
-                            2. Any suggestions and contributions (I don't mean money) are welcomed. Please email me at <font class="accent">piyushagade@gmail.com</font>.<br><br>
+                            2. Any suggestions and contributions (I don't mean money) are welcomed. Please email me at <a href="mailto://piyushagade@gmail.com"><font class="accent">piyushagade@gmail.com</font></a>.<br><br>
                             3. If any of you is wondering, I am Piyush Agade. I am a Computer science graduate student at Univeristy of Florida (at the time of release of this app). 
                             <br><br>
                             
                             <center> <button class="button" id="b_close_about">Okay</button></p></center>
-                            
                     </span>
                 </div>
             </div>
@@ -174,15 +178,45 @@
             <div id="ui_globalkeyshortcuts" class="hidden pages">
                 <div class="pages_content"> 
                     
-                    <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="accent">
-                        <font class="accent bold" style="font-weight:1400;">Keyboard Shortcuts</font>
-                        <br>
-                            1. Ctrl + Shift + C : <span class="black">Send clipboard to other devices.</span><br>
-                            2. Ctrl + Shift + V : <span class="black">Get clipboard from the cloud.</span><br>
-                            3. Ctrl + Shift + O : <span class="black">Manually open the link from mobile device.</span><br>
-                            4. Ctrl + Shift + U : <span class="black">Show/hide UniClip.</span><br>
-                            5. Ctrl + Shift + Q : <span class="black">Quit UniClip.</span><br>
-                            6. Ctrl + Shift + Alt + U : <span class="black">Toggle neccessity of  'Ctrl + Shift + C' and  'Ctrl + Shift + V' to sync clipboards. This setting can be manually changed in 'Preferences'.</span><br><br>
+                        <font class="accent bold heading">Keyboard Shortcuts</font>
+                        <table border="0">
+                            <tr>
+                                <td  valign="top" width="100px">Ctrl + Shift + C</td>
+                                <td> <span class="black">Send clipboard to other devices.</span></td>
+
+                            </tr>
+                            <tr>
+                                <td  valign="top" width="100px">Ctrl + Shift + V </td>
+                                <td>  <span class="black">Get clipboard from the cloud.</span></td>
+
+                            </tr>
+                            <tr>
+                                <td  valign="top" width="100px">Ctrl + Shift + O</td>
+                                <td> <span class="black">Manually open the link from mobile device.</span></td>
+
+                            </tr>
+                            <tr>
+                                <td  valign="top" width="100px">Ctrl + Shift + U</td>
+                                <td> <span class="black">Show/hide UniClip.</span></td>
+
+                            </tr>
+                            <tr>
+                                <td  valign="top" width="100px">Ctrl + Shift + Q</td>
+                                <td> <span class="black">Quit UniClip.</span></td>
+
+                            </tr>
+                            <tr>
+                                <td valign="top" width="100px">Ctrl + Shift + Alt + U </td>
+                                <td> <span class="black">Toggle neccessity of  'Ctrl + Shift + C' and  'Ctrl + Shift + V' to sync clipboards. This setting can be manually changed in 'Preferences'.</span></td>
+
+                            </tr>
+                            
+                        </table>
+                            
+                            
+                            
+                            
+                            
                             
                             Note:<br>
                             <span class="black">Show/hide UniClip minimizes the application to the system tray.</span>
@@ -191,7 +225,6 @@
                         <center><p>
                         <button class="button" id="b_close_globalkeyshortcuts">Got It</button></p></center>
                         
-                    </span>
                 </div>
             </div>
             
@@ -201,15 +234,15 @@
             <div id="ui_update" class="hidden pages">
                 <div class="pages_content"> 
                     <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="black">
-                        <font class="accent bold" style="font-weight:1400;">Update UniClip desktop</font>
+                        <font class="accent bold heading" style="font-weight:1400;">Update UniClip desktop</font>
                         <br>
                             1. A new update to UniClip desktop is available. New UniClip has got even better, safer and more productive than ever.<br><br>
                             
                             2. Please also make sure your mobile application is updated to the latest version.<br><br>
                             
-                            3. For more info, visit the UniClip website on your browser (<font class="accent">http://piyushagade.xyz/uniclip/</font>).<br><br><br>
+                            3. For more info, visit the UniClip website on your browser (<a href="http://piyushagade.xyz/uniclip"><font class="accent">http://piyushagade.xyz/uniclip/</font></a>).<br><br><br>
                             
-                            <center> <a href="http://piyushagade.github.io/web/uniclip/download/uniclip_setup.exe" target="_self"><button class="button" id="b_do_update">Download now</button></a></p></center>
+                            <center> <a href="http://piyushagade.xyz/uniclip"><button class="button" id="b_do_update">Download now</button></a></p></center>
                             <center> <button class="button" id="b_close_update">Later</button></p></center>
                         
                     </span>
@@ -221,7 +254,7 @@
             <div id="ui_help" class="hidden pages">
                 <div class="pages_content"> 
                     <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="black">
-                        <font class="accent bold" style="font-weight:1400;">Help</font>
+                        <font class="accent bold heading" style="font-weight:1400;">Help</font>
                         <br>
                             <font class="accent" style="font-weight:1400;">What's UniClip?</font><br>
                             UniClip is a cross-platform clipboard synchronizartion tool. In simpler words, it lets lets you copy any text on a device and lets you paste it on another. A simple, yet much needed tool. 
@@ -252,20 +285,27 @@
                 <div class="pages_content"> 
                     
                     <span style="align-content: left; margin-left:00px; font-size:16px; text-align:justify" class="accent">
-                        <font class="accent bold" style="font-weight:1400;">Preferences</font>
-                        <br>
-                            <label class="accent">Enable UniClip! service<input type="checkbox" id="autostart"/></label>
-                            <span class="black">If enabled, UniClip will sync clipboard of this device.</span><br><br>
-                            
-                            <label class="accent">Sync clipboard automatically<input  class="accent" type="checkbox" id="automatic_sync"/></label>
-                            <span class="black">If disabled, corresponding keyboard shortcuts will be required to update and send clipboards.</span><br><br>
-                            
-                            <label class="accent">Start minimized<input type="checkbox" id="minimized"/></label>
-                            <span class="black">If enabled, UniClip will starts minimized to the tray.</span><br><br>
-                            <label class="accent">Show notifications<input type="checkbox" id="notifications"/></label>
-                            <span class="black">If enabled, you will be notified of UniClip's events.</span><br><br>
-                            
-                        <br>
+                        <font class="accent bold heading">Preferences</font>
+                            <div class="card card-2">
+                                <input type="checkbox" id="autostart" class="checkbox" /><label class="accent inline">Enable UniClip! service</label>
+                            </div>
+                            <span class="black block pref-desc">If enabled, UniClip will sync clipboard of this device.</span>
+
+                            <div class="card card-2">
+                                <input  class="accent checkbox" type="checkbox" id="automatic_sync"/><label class="accent inline">Sync clipboard automatically</label>
+                            </div>
+                            <span class="black block pref-desc">If disabled, corresponding keyboard shortcuts will be required to update and send clipboards.</span>
+
+                            <div class="card card-2">
+                                <input type="checkbox" id="minimized" class="checkbox"/><label class="accent inline">Start minimized</label>
+                            </div>
+                            <span class="black block pref-desc">If enabled, UniClip will starts minimized to the tray.</span>
+
+                            <div class="card card-2">
+                                <input type="checkbox" id="notifications" class="checkbox"/><label class="accent inline">Show notifications</label>
+                            </div>
+                            <span class="black block pref-desc">If enabled, you will be notified of UniClip's events.</span>
+
                         <center><p>
                         <button class="button" id="b_close_preferences" onClick="onPrefChange()">Save</button></p></center>
                             
@@ -275,45 +315,73 @@
 
 
 
-        <!-- -->
-    </div>
+        </div>
+
+        <!-- tooltip -->
+        <div id="tooltip_container" class="tooltip_container">
+            <center>
+                <span id="tip" class="tip">
+                </span>
+            </center>
+        </div>
+
+        <!-- update button -->
+        <button class="button update_button" id="update_button">Update available.</button>
+
+        
     </div>
 
-    <button class="button update_button" id="update_button">Update available.</button>
-
+    <!-- popup -->
     <div class="popup" id="ui_popup"><center><div id="popup_content" class="popup_content"></div></center></div>
 
-</div>
-    
-<script type="text/javascript">
+    <!-- running menu -->
+    <div id="running_menu">
+        <span style="color: #AAA; padding-bottom: 10px; font-size: 30px;" class="block">
+            Menu
+        </span>
+        <button class="button_anim menu_option" style="margin-bottom:8px; margin-left: 10px;" id="b_globalkeyshortcuts_from_running">Keyboard Shortcuts</button><br>
+        <button class="button_anim" style="margin-bottom:8px; margin-left: 10px;" id="b_preferences">Preferences</button><br>
+        <button class="button_anim" style="margin-bottom:8px;; margin-left: 10px;" id="b_unregister">Unregister desktop</button><br>
+        <button class="button_anim" style="margin-bottom:8px;; margin-left: 10px;" id="b_about">About</button><br>
+        <button class="button_anim" style="margin-bottom:8px;; margin-left: 10px;" id="b_help">Help</button><br>
+        <button class="button_anim_alt hidden" style="margin-bottom:8px;; margin-left: 10px;" id="b_update">Update available</button>
 
-function initialize(){
-        // Send IPC
-        var remote = require('electron').remote;
-        var authenticated = "?";
-            
-        remote.getGlobal('authentication_status').authenticated = authenticated; 
- 
-        var ipcRenderer = require('electron').ipcRenderer;   
-        ipcRenderer.send('auth_status');
-     
-        ipcRenderer.on('auth_status', function(event, arg) {
-            if(arg==2){
-                //Already autheticated, make UI changes
-                onAuthorized();
-            }
-            else{
-                onNotAuthorized();
-            }
-        }); 
-}
+        <!-- <button class="button" style="margin-bottom: 8px;; margin-left: 10px;"  id="b_android">Get Android app</button> -->
 
-
-
-</script>
+        <button class="button_anim_alt" style="margin-bottom:8px;; margin-left: 10px; position: absolute; bottom: 20px;
+        left: 30px;" id="b_running_menu_close">Back</button>
+    </div>
         
-<script type="text/javascript" src="js/scripts.js">
-</script>
+
+    <script type="text/javascript">
+
+    function initialize(){
+            // Send IPC
+            var remote = require('electron').remote;
+            var authenticated = "?";
+                
+            remote.getGlobal('authentication_status').authenticated = authenticated; 
+     
+            var ipcRenderer = require('electron').ipcRenderer;   
+            ipcRenderer.send('auth_status');
+         
+            ipcRenderer.on('auth_status', function(event, arg) {
+                if(arg==2){
+                    //Already autheticated, make UI changes
+                    onAuthorized();
+                }
+                else{
+                    onNotAuthorized();
+                }
+            }); 
+    }
+
+
+
+    </script>
+            
+    <script type="text/javascript" src="js/scripts.js">
+    </script>
 
 </body>
 </html>
