@@ -24,6 +24,15 @@ Quit UniClip      | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>q</kbd>
 Toggle auto-sync  | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>Alt</kbd> <kbd>u</kbd>
 
 
+Website
+----
+Visit the official website. Click (http://piyushagade.xyz/uniclip)[http://piyushagade.xyz/uniclip]
+
+
+Download for Linux
+----
+Download the tar.gz file <a href="https://github.com/piyushagade/UniClip-Linux/raw/master/downloads/uniclip-x64.tar.gz">here</a>.
+
 Play Store
 ----
 The android app is available on Google Play:
