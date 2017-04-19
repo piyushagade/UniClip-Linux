@@ -31,7 +31,7 @@ Visit the official website. Click [http://piyushagade.xyz/uniclip](http://piyush
 
 Download for Linux
 ----
-Download the tar.gz file <a href="https://github.com/piyushagade/web/uniclip/raw/master/downloads/uniclip-x64.tar.gz">here</a>.
+Download the tar.gz file <a href="https://github.com/piyushagade/web/blob/gh-pages/uniclip/download/uniclip-linux-x64.tar.gz?raw=true">here</a>.
 
 Play Store
 ----
