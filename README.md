@@ -70,6 +70,10 @@ Changes
 * **Version 2:**
     * Open links on mobile on PC instantly
     * Automatically sync clipboards without using keyboard shortcuts
+* **Version 3:**
+    * Major bug fixes
+* **Version 4:**
+    * UI overhaul
 
 Open source libraries
 -------
