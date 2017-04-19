@@ -26,7 +26,7 @@ Toggle auto-sync  | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>Alt</kbd> <kbd>u</
 
 Website
 ----
-Visit the official website. Click (http://piyushagade.xyz/uniclip)[http://piyushagade.xyz/uniclip]
+Visit the official website. Click [http://piyushagade.xyz/uniclip](http://piyushagade.xyz/uniclip)
 
 
 Download for Linux
