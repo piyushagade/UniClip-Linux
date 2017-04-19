@@ -35,16 +35,14 @@ The android app is available on Google Play:
 Screenshots
 -----------
 
-| Authentication Page | Service running |
+| Authentication Page | Home Page |
 |:-:|:-:|
 | ![Authentication Page][1] | ![Service running][3] |
-| [Authentication Page] | [_Service running_] |
 
 
-| Keyboard Shortcuts | How to scan page |
+| Menu | Preferences |
 |:-:|:-:|
-| ![Keyboard Shortcuts][4] | ![How to scan page][2] |
-| [_Keyboard Shortcuts_] | [_How to scan page_] |
+| ![Menu][4] | ![Preferences][2] |
 
 
 What It Does
@@ -84,8 +82,9 @@ Open source libraries
 [7]: https://github.com/piyushagade/material-intro
 [6]: https://github.com/HeinrichReimer
 
-[1]: http://i.imgur.com/8uZfOXx.png
-[2]: http://i.imgur.com/QNG7YlG.png
-[3]: http://i.imgur.com/f0z2Jpn.png
-[4]: http://i.imgur.com/ltiS1oe.png
+
+[1]: http://i.imgur.com/LXBO1Ey.png
+[2]: http://i.imgur.com/vXnm4EF.png
+[3]: http://i.imgur.com/holmAaL.png
+[4]: http://i.imgur.com/qsOxLxR.png
 [5]: http://i.imgur.com/StS7Vtl.png
